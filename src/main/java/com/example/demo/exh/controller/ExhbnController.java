@@ -88,7 +88,7 @@ public class ExhbnController {
     
     @DeleteMapping("")
     public Messenger delete(@RequestBody Exhbn exhbn){
-    	logger.info("======== 목록 삭제 ========"+exhbn.getExhbnTitle());
+    	//logger.info("======== 목록 삭제 ========"+exhbn.getExhbnTitle());
         exhbnRepository.delete(exhbn);
         return Messenger.SUCCESS;
     }

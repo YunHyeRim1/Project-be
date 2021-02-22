@@ -61,7 +61,6 @@ public class ReviewController {
 	
 	@DeleteMapping("")
 	public Messenger delete(@RequestBody Review review) {
-		logger.info("== 게시글 삭제 =="+review.getReviewTitle());
 		reviewRepository.delete(review);
 		return Messenger.SUCCESS;
 	}

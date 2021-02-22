@@ -1,16 +1,29 @@
 package com.example.demo.hal.domain;
 
-import lombok.*;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-@Component @Getter @Setter @ToString @Entity
-@AllArgsConstructor @Lazy @NoArgsConstructor
+import com.example.demo.exh.domain.Exhbn;
+
+@Entity
 public class Hall {
-	private int hallNum;
-    private String hallName, hallNumber, hallLocation;
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "hall_num") private int hallNum;
+    @Column(name = "hall_name") private String hallName;
+    @Column(name = "hall_number") private String hallNumber;
+    @Column(name = "hall_location") private String hallLocation;
+    
+    @OneToMany(mappedBy = "hall")
+    private List<Exhbn> exhbnList = new ArrayList<>();
 }
 /*
 create table shows(

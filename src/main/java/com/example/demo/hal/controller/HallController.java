@@ -7,10 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.demo.cmm.domain.Messenger;
-import com.example.demo.cmm.domain.Pagination;
-import com.example.demo.exh.domain.Exhbn;
-import com.example.demo.exh.repository.ExhbnRepository;
-import com.example.demo.exh.service.ExhbnService;
+
+import com.example.demo.hal.repository.HallRepository;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -27,78 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController @RequiredArgsConstructor
-@RequestMapping("/exhbns")
-public class HallController {
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    final ExhbnService exhbnService;
-    final Pagination page;
-    final ExhbnRepository exhbnRepository;
-
-    @PostMapping("")
-    public Messenger add(@RequestBody Exhbn exhbn) {
-    	logger.info("======== �쟾�떆�쉶 �벑濡� ========"+exhbn.toString());
-    	exhbnRepository.save(exhbn);
-    	return Messenger.SUCCESS;
-    }
-    
-    @GetMapping("/list")
-    public List<Exhbn> list() {
-    	logger.info("======== �쟾�떆�쉶 紐⑸줉 ========");
-        return exhbnRepository.findAll();
-    }
-    
-    /*
-    @GetMapping("/list/{pageSize}/{pageNum}")
-    public Map<?,?> list(@PathVariable String pageSize, @PathVariable String pageNum) {
-    	logger.info("=========== 紐⑸줉 吏꾩엯 ===========");
-        var map = new HashMap<String, Object>();
-    	var page = new Pagination(
-				integer.apply(pageSize),
-				integer.apply(pageNum),
-				exhbnRepository.count())
-				;
-    	map.put("list", exhbnService.list(page));
-    	map.put("page", page);
-        return map;
-    }
-    
-    @GetMapping("/page/{pageSize}/{pageNum}/selectAll")
-    public List<?> selectAll(@PathVariable String pageSize, @PathVariable String pageNum){
-    	logger.info("exhbns List Execute ...");
-    	var map = new HashMap<String, String>();
-    	map.put("TOTAL_COUNT", Sql.TOTAL_COUNT.toString() + Table.exhbnS);	
-        return exhbnRepository.selectAll(new Pagination(
-				Table.exhbnS.toString(), 
-				integer.apply(pageSize),
-				integer.apply(pageNum),
-				commonRepository.totalCount(map)));
-    }
-    */
-    @GetMapping("/{exhbnNum}")
-    public Optional<Exhbn> detail(@PathVariable int exhbnNum) {
-    	logger.info("======== �쟾�떆�쉶 �긽�꽭 ========");
-        return exhbnRepository.findById(exhbnNum);
-    }
-    
-    @PutMapping("")
-    public Messenger update(@RequestBody Exhbn exhbn){
-    	logger.info("======== 紐⑸줉 �닔�젙 ========"+exhbn.toString());
-    	exhbnRepository.update(exhbn);
-        return Messenger.SUCCESS;
-    }
-    
-    @DeleteMapping("")
-    public Messenger delete(@RequestBody Exhbn exhbn){
-    	logger.info("======== 紐⑸줉 �궘�젣 ========"+exhbn.getExhbnTitle());
-        exhbnRepository.delete(exhbn);
-        return Messenger.SUCCESS;
-    }
-    
-    @GetMapping("/count")
-    public String count() {
-    	logger.info(String.format("Count exhbns ..."));
-    	var map = new HashMap<String,String>();
-    	return string.apply(exhbnRepository.count());
-    }
-   
+@RequestMapping("/halls")
+public class HallController<Hall> {
+	
 }

@@ -1,15 +1,25 @@
 package com.example.demo.rec.domain;
 
-import lombok.*;
-import org.springframework.context.annotation.Lazy;
-import org.springframework.stereotype.Component;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Component @Getter @Setter @ToString @Entity
-@AllArgsConstructor @Lazy @NoArgsConstructor
+import com.example.demo.anl.domain.Analysis;
+
+@Entity
 public class Recommend {
-	private int recNum, exhbnNum, userNum;
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "rec_num") private int recNum;
+	
+	@ManyToOne
+    @JoinColumn(name = "anal_num")
+    private Analysis analysis;
 }
 /*
 create table shows(
