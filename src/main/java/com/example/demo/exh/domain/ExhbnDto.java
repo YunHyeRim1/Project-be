@@ -15,7 +15,6 @@ public class ExhbnDto {
     private String exhbnTitle; 
     private String startDate; 
     private String endDate;
-    private String exhbnTime;
     private String exhbnGenre;
     private String exhbnPrice;
     private String exhbnArtist;

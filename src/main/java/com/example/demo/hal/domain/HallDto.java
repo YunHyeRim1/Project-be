@@ -1,5 +1,7 @@
 package com.example.demo.hal.domain;
 
+import javax.persistence.Column;
+
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +11,10 @@ import lombok.Data;
 public class HallDto {
 	private int hallNum;
     private String hallName;
-    private String hallNumber;
     private String hallLocation;
+    private String hallTime;
+    private String hallClosed;
+    private String hallPnumber;
+    private String hallInfo;
+    private String hallImage;
 }

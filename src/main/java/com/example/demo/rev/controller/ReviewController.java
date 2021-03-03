@@ -1,75 +1,62 @@
 package com.example.demo.rev.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
-import static com.example.demo.cmm.domain.Util.string;
-
 import lombok.RequiredArgsConstructor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.cmm.domain.Messenger;
-import com.example.demo.cmm.domain.Pagination;
+import com.example.demo.anl.service.AnalysisServiceImpl;
+import com.example.demo.cmm.controller.AbstractController;
 import com.example.demo.rev.domain.Review;
-import com.example.demo.rev.repository.ReviewRepository;
-import com.example.demo.rev.service.ReviewService;
+import com.example.demo.rev.service.ReviewServiceImpl;
 
-@RestController @RequiredArgsConstructor
+@RestController 
+@RequiredArgsConstructor 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/reviews")
-public class ReviewController {
-		private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	final ReviewService reviewService;
-	final Pagination page;
-	final ReviewRepository reviewRepository;
-	
-	@PostMapping("")
-	public Messenger write(@RequestBody Review review) {
-		logger.info("== 리뷰 등록 =="+review.toString());
-		reviewRepository.save(review);
-		return Messenger.SUCCESS;
+public class ReviewController extends AbstractController<Review> {
+	final ReviewServiceImpl service;
+
+	@PostMapping("/save")
+	public ResponseEntity<Integer> save(Review t) {
+		return ResponseEntity.ok(service.save(t));
 	}
- 
-	@GetMapping("/list")
-	public List<Review> list() {
-		logger.info("== 게시판 목록 ==");
-		return reviewRepository.findAll();
-	}
-	
-	@GetMapping("/{reviewNum}")
-	public Optional<Review> detail(@PathVariable int reviewNum) {
-		logger.info("== 게시글 상세 ==");
-		return reviewRepository.findById(reviewNum);
-	}
-	
-	@PutMapping("")
-	public Messenger update(@RequestBody Review review) {
-		logger.info("== 게시글 수정 =="+review.toString());
-		reviewRepository.update(review);
-		return Messenger.SUCCESS;
-	}
-	
-	@DeleteMapping("")
-	public Messenger delete(@RequestBody Review review) {
-		reviewRepository.delete(review);
-		return Messenger.SUCCESS;
+
+	@DeleteMapping("/delete")
+	public ResponseEntity<Integer> delete(Review t) {
+		return ResponseEntity.ok(service.delete(t));
 	}
 
 	@GetMapping("/count")
-	public String count() {
-		logger.info(String.format("Count reviews ..."));
-		var map = new HashMap<String, String>();
-		return string.apply(reviewRepository.count());
+	public ResponseEntity<Integer> count() {
+		return ResponseEntity.ok(service.count());
 	}
-	
+
+	@GetMapping("/one/{id}")
+	public ResponseEntity<Review> getOne(int id) {
+		return ResponseEntity.ok(service.getOne(id));
+	}
+
+	@GetMapping("/find/{id}")
+	public ResponseEntity<Optional<Review>> findById(int id) {
+		return ResponseEntity.ok(service.findById(id));
+	}
+
+	@GetMapping("/exists/{id}")
+	public ResponseEntity<Boolean> existsById(int id) {
+		return ResponseEntity.ok(service.existsById(id));
+	}
+
+	@GetMapping("/all")
+	public ResponseEntity<List<Review>> findAll() {
+		return ResponseEntity.ok(service.findAll());
+	}
+
 }

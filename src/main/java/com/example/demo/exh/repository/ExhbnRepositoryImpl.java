@@ -1,167 +1,54 @@
 package com.example.demo.exh.repository;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import javax.persistence.EntityManager;
+
+import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.exh.domain.Exhbn;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class ExhbnRepositoryImpl implements ExhbnRepository {
+public class ExhbnRepositoryImpl extends QuerydslRepositorySupport implements IExhbnRepository {
 
-	@Override
-	public List<Exhbn> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	private final JPAQueryFactory qf;
+	private final EntityManager em;
+	public ExhbnRepositoryImpl(JPAQueryFactory qf, EntityManager em) {
+		super(Exhbn.class);
+		this.qf = qf;
+		this.em = em;
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Exhbn> findAll(Sort sort) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Exhbn> findByExhbnTitle(String exhbnTitle) {
+		return em.createNamedQuery("Exhbn.findByExhbnTitle")
+					.setParameter("exhbnTitle", exhbnTitle)
+					.getResultList();
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Exhbn> findAllById(Iterable<Integer> ids) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Exhbn> findByExhbnGenre(String exhbnGenre) {
+		return em.createNamedQuery("select e from Exhbn e where e.exhbn_genre like :exhbnGenre")
+				.setParameter("exhbnGenre", exhbnGenre)
+				.getResultList();
 	}
-
+	/*
+	@SuppressWarnings("unchecked")
 	@Override
-	public <S extends Exhbn> List<S> saveAll(Iterable<S> entities) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void flush() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public <S extends Exhbn> S saveAndFlush(S entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteInBatch(Iterable<Exhbn> entities) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAllInBatch() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public Exhbn getOne(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Exhbn> List<S> findAll(Example<S> example) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Exhbn> List<S> findAll(Example<S> example, Sort sort) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Page<Exhbn> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Exhbn> S save(S entity) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Optional<Exhbn> findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean existsById(Integer id) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public long count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(Exhbn entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAll(Iterable<? extends Exhbn> entities) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void deleteAll() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public <S extends Exhbn> Optional<S> findOne(Example<S> example) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Exhbn> Page<S> findAll(Example<S> example, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <S extends Exhbn> long count(Example<S> example) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public <S extends Exhbn> boolean exists(Example<S> example) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void update(Exhbn exhbn) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public List<BoardDto> findByMemNo(String memNo) {
+		return  em.createQuery("select "
+				+ "b.brd_no boardNum  "
+				+ "b.title title "
+				+ "b.content content "
+				+ "b.written_date writtenDate "
+				+ "m.mem_no memNo "
+				+ "m.mem_name memName "
+				+ "m.mem_email memEmail \n"
+				+ "from Board b inner join Member m on b.mem_no = m.mem_no \n"
+				+ "where b.mem_no like :memNo")
+				.setParameter("memNo", memNo)
+				.getResultList();
+	} */
 }

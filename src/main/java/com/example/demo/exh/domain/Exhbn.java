@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,7 +19,11 @@ import com.example.demo.bkg.domain.Booking;
 import com.example.demo.hal.domain.Hall;
 import com.example.demo.rev.domain.Review;
 
-@Entity
+import lombok.Getter;
+
+@Entity @Getter
+@NamedQuery(name = "Exhbn.findByExhbnTitle", 
+query = "select e from Exhbn e where e.exhbn_title like :exhbnTitle")
 @Table(name = "exhbns")
 public class Exhbn {
 	
@@ -28,7 +33,6 @@ public class Exhbn {
     @Column(name = "exhbn_title") private String exhbnTitle; 
     @Column(name = "start_date") private String startDate; 
     @Column(name = "end_date") private String endDate;
-    @Column(name = "exhbn_time") private String exhbnTime;
     @Column(name = "exhbn_genre") private String exhbnGenre;
     @Column(name = "exhbn_price") private String exhbnPrice;
     @Column(name = "exhbn_artist") private String exhbnArtist;

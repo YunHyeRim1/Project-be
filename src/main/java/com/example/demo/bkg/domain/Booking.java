@@ -7,11 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import com.example.demo.exh.domain.Exhbn;
 import com.example.demo.uss.domain.User;
 
-@Entity
+import lombok.Getter;
+
+@Entity @Getter
+@Table(name = "bookings")
 public class Booking {
 	
 	@Id 

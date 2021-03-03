@@ -4,6 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.uss.domain.User;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
-    public void update(User user);
+interface IUserRepository {
+	
+}
+
+public interface UserRepository extends JpaRepository<User, Integer>, IUserRepository {
+
 }

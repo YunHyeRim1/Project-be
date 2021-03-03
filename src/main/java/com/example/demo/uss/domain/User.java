@@ -9,12 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.example.demo.anl.domain.Analysis;
 import com.example.demo.bkg.domain.Booking;
 import com.example.demo.rev.domain.Review;
 
-@Entity
+import lombok.Getter;
+
+@Entity @Getter
+@Table(name = "users")
 public class User {
 	
 	@Id 
