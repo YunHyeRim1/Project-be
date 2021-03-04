@@ -34,7 +34,7 @@ public class RecommendController extends AbstractController<Recommend> {
 		return ResponseEntity.ok(service.delete(t));
 	}
 
-	@GetMapping("/one/{id}")
+	@GetMapping("/count")
 	public ResponseEntity<Integer> count() {
 		return ResponseEntity.ok(service.count());
 	}

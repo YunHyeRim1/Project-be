@@ -11,14 +11,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 interface IHallRepository {
+
+	List<Hall> findByLocation(String location);
 	
 }
 
 public interface HallRepository extends JpaRepository<Hall, Integer>, IHallRepository {
-	@Query("update hall set hall_closed = :hallClosed,"
-			+ " hall_info = :#{#hallInfo},"
-			+ " hall_image = :#{#hallImage},"
-			+ " where hall_num = :#{#hallNum}")
-	public int update(@Param("hall") Hall t);
+	@Query(value="update hall h set h.hall_closed = :hallClosed "
+			+ " where h.hall_num = :hallNum", nativeQuery = true)
+	public int update(@Param("hallClosed") String hallClosed,
+						@Param("hallNum") int hallNum);
 	public List<Hall> findByHallNameAndHallLocation(String hallName, String hallLocation);
 }

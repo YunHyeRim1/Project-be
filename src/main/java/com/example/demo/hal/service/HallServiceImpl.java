@@ -44,4 +44,14 @@ public class HallServiceImpl extends AbstractService<Hall> implements HallServic
     public List<Hall> findAll() {
     	return hallRepository.findAll();
     }
+    @Override
+    public List<Hall> findByHallNameAndHallLocation(String name, String location) {
+    	// TODO Auto-generated method stub
+    	return null;
+    }
+    @Override
+	public int update(String hallClosed, int hallNum) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

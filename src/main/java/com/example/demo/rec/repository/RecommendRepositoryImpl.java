@@ -9,10 +9,10 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 @Repository
 public class RecommendRepositoryImpl extends QuerydslRepositorySupport implements IRecommendRepository {
 	
-	private final JPAQueryFactory qf;
-	public RecommendRepositoryImpl(JPAQueryFactory qf) {
+	//private final JPAQueryFactory qf;
+	public RecommendRepositoryImpl() {
 		super(Recommend.class);
-		this.qf = qf;
+		//this.qf = qf;
 	}
 
 }

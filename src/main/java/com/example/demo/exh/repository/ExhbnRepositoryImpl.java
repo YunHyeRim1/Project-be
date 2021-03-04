@@ -13,11 +13,11 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 @Repository
 public class ExhbnRepositoryImpl extends QuerydslRepositorySupport implements IExhbnRepository {
 
-	private final JPAQueryFactory qf;
+	//private final JPAQueryFactory qf;
 	private final EntityManager em;
-	public ExhbnRepositoryImpl(JPAQueryFactory qf, EntityManager em) {
+	public ExhbnRepositoryImpl(EntityManager em) {
 		super(Exhbn.class);
-		this.qf = qf;
+		//this.qf = qf;
 		this.em = em;
 	}
 	@SuppressWarnings("unchecked")

@@ -22,8 +22,9 @@ import com.example.demo.rev.domain.Review;
 import lombok.Getter;
 
 @Entity @Getter
-@NamedQuery(name = "Exhbn.findByExhbnTitle", 
-query = "select e from Exhbn e where e.exhbn_title like :exhbnTitle")
+@NamedQuery(
+		name = "Exhbn.findByExhbnTitle", 
+		query = "select e from Exhbn e where e.exhbnTitle like :exhbnTitle")
 @Table(name = "exhbns")
 public class Exhbn {
 	

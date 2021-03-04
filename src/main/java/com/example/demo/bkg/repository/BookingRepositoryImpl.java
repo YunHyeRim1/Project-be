@@ -9,10 +9,10 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 @Repository
 public class BookingRepositoryImpl extends QuerydslRepositorySupport implements IBookingRepository {
 
-	private final JPAQueryFactory qf;
-	public BookingRepositoryImpl(JPAQueryFactory qf) {
+	//private final JPAQueryFactory qf;
+	public BookingRepositoryImpl() {
 		super(Booking.class);
-		this.qf = qf;
+		//this.qf = qf;
 	}
 
 }

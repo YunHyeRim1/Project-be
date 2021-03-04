@@ -14,11 +14,17 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 @Repository
 public class HallRepositoryImpl extends QuerydslRepositorySupport implements IHallRepository {
 
-	private final JPAQueryFactory qf;
+	//private final JPAQueryFactory qf;
 	private final EntityManager em;
-	public HallRepositoryImpl(JPAQueryFactory qf, EntityManager em) {
+	public HallRepositoryImpl(EntityManager em) {
 		super(Hall.class);
-		this.qf = qf;
+		//this.qf = qf;
 		this.em = em;
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Hall> findByLocation(String location) {
+		return em.createQuery("select h from Hall h where h.hall_location like :hallLocation")
+				.setParameter("hallLocation", location).getResultList();
 	}
 }

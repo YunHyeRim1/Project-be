@@ -9,10 +9,10 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 @Repository
 public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements IReviewRepository {
 
-	private final JPAQueryFactory qf;
-	public ReviewRepositoryImpl(JPAQueryFactory qf) {
+	//private final JPAQueryFactory qf;
+	public ReviewRepositoryImpl() {
 		super(Review.class);
-		this.qf = qf;
+		//this.qf = qf;
 	}
 
 }
