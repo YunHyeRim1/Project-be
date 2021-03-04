@@ -25,7 +25,7 @@ import lombok.Getter;
 public class Analysis {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "anal_num") private int analNum;
 	
 	@ManyToOne

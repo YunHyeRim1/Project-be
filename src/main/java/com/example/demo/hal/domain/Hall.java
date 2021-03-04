@@ -21,7 +21,7 @@ import lombok.Getter;
 public class Hall {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "hall_num") private int hallNum;
     @Column(name = "hall_name") private String hallName;
     @Column(name = "hall_location") private String hallLocation;

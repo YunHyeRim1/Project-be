@@ -22,7 +22,7 @@ import lombok.Getter;
 public class User {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_num") private int userNum;
 	@Column(name = "userid") private String userid;
 	@Column(name = "password") private String password;

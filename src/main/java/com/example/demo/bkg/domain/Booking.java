@@ -19,7 +19,7 @@ import lombok.Getter;
 public class Booking {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "book_num") private int bookNum;
 	@Column(name = "book_date") private String bookDate;
 	@Column(name = "total_price") private String totalPrice;

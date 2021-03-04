@@ -29,7 +29,7 @@ import lombok.Getter;
 public class Exhbn {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "exhbn_num") private int exhbnNum;
     @Column(name = "exhbn_title") private String exhbnTitle; 
     @Column(name = "start_date") private String startDate; 

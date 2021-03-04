@@ -18,7 +18,7 @@ import lombok.Getter;
 public class Recommend {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "rec_num") private int recNum;
 	
 	@ManyToOne

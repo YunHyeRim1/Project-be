@@ -14,7 +14,5 @@ interface IExhbnRepository {
 }
 
 public interface ExhbnRepository extends JpaRepository<Exhbn, Integer>, IExhbnRepository {
-	//public List<Exhbn> findByExhbnTitle(String exhbnTitle);
-	//public List<Exhbn> findByExhbnGenre(String exhbnGenre);
-	//public List<BoardDto> findByMemNo(String MemNo);
+
 }
