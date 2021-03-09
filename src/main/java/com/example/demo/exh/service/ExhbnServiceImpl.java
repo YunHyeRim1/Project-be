@@ -16,29 +16,29 @@ public class ExhbnServiceImpl extends AbstractService<Exhbn> implements ExhbnSer
 	final ExhbnRepository exhbnrepository;
 	
 	@Override 
-	public int save(Exhbn exhbn) {
-		return (exhbnrepository.save(exhbn) != null) ? 1 : 0;
+	public long save(Exhbn e) {
+		return (exhbnrepository.save(e) != null) ? 1 : 0;
 	}
 	@Override 
-	public int delete(Exhbn exhbn) {
-		exhbnrepository.delete(exhbn); 
-		return(getOne(exhbn.getExhbnNum()) == null) ? 1 : 0;
+	public long delete(Exhbn e) {
+		exhbnrepository.delete(e); 
+		return(getOne(e.getExhbnNum()) == null) ? 1 : 0;
 	}
 	@Override 
-	public int count() {
-		return (int)exhbnrepository.count();
+	public long count() {
+		return exhbnrepository.count();
 	}
 	@Override 
-    public Exhbn getOne(int exhbnNum) {
-    	return exhbnrepository.getOne(exhbnNum);
+    public Exhbn getOne(long id) {
+    	return exhbnrepository.getOne(id);
     }
 	@Override 
-    public Optional<Exhbn> findById(int exhbnNum) {
-    	return exhbnrepository.findById(exhbnNum);
+    public Optional<Exhbn> findById(long id) {
+    	return exhbnrepository.findById(id);
 	}
 	@Override 
-    public boolean existsById(int exhbnNum) {
-    	return exhbnrepository.existsById(exhbnNum);
+    public boolean existsById(long id) {
+    	return exhbnrepository.existsById(id);
     }
 	@Override 
     public List<Exhbn> findAll() {

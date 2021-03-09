@@ -25,32 +25,32 @@ public class ReviewController extends AbstractController<Review> {
 	final ReviewServiceImpl service;
 
 	@PostMapping("/save")
-	public ResponseEntity<Integer> save(Review t) {
+	public ResponseEntity<Long> save(Review t) {
 		return ResponseEntity.ok(service.save(t));
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Integer> delete(Review t) {
+	public ResponseEntity<Long> delete(Review t) {
 		return ResponseEntity.ok(service.delete(t));
 	}
 
 	@GetMapping("/count")
-	public ResponseEntity<Integer> count() {
+	public ResponseEntity<Long> count() {
 		return ResponseEntity.ok(service.count());
 	}
 
 	@GetMapping("/one/{id}")
-	public ResponseEntity<Review> getOne(int id) {
+	public ResponseEntity<Review> getOne(long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 
 	@GetMapping("/find/{id}")
-	public ResponseEntity<Optional<Review>> findById(int id) {
+	public ResponseEntity<Optional<Review>> findById(long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@GetMapping("/exists/{id}")
-	public ResponseEntity<Boolean> existsById(int id) {
+	public ResponseEntity<Boolean> existsById(long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
 

@@ -19,7 +19,7 @@ public class Recommend {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "rec_num") private int recNum;
+	@Column(name = "rec_num") private long recNum;
 	
 	@ManyToOne
     @JoinColumn(name = "anal_num")

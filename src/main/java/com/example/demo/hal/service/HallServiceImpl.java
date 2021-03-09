@@ -16,28 +16,28 @@ public class HallServiceImpl extends AbstractService<Hall> implements HallServic
 	final HallRepository hallRepository;
 	
 	@Override 
-	public int save(Hall hall) {
+	public long save(Hall hall) {
 		return (hallRepository.save(hall) != null) ? 1 : 0;
 	}
 	@Override 
-	public int delete(Hall hall) {
+	public long delete(Hall hall) {
 		hallRepository.delete(hall); 
 		return(getOne(hall.getHallNum()) == null) ? 1 : 0;
 	}
 	@Override 
-	public int count() {
-		return (int)hallRepository.count();
+	public long count() {
+		return hallRepository.count();
 	}
 	@Override 
-    public Hall getOne(int id) {
+    public Hall getOne(long id) {
     	return getOne(id);
     }
 	@Override 
-    public Optional<Hall> findById(int id) {
+    public Optional<Hall> findById(long id) {
     	return hallRepository.findById(id);
 	}
     @Override 
-    public boolean existsById(int id) {
+    public boolean existsById(long id) {
     	return hallRepository.existsById(id);
     }
     @Override 
@@ -46,12 +46,10 @@ public class HallServiceImpl extends AbstractService<Hall> implements HallServic
     }
     @Override
     public List<Hall> findByHallNameAndHallLocation(String name, String location) {
-    	// TODO Auto-generated method stub
-    	return null;
+    	return hallRepository.findByHallNameAndHallLocation(name, location);
     }
-    @Override
-	public int update(String hallClosed, int hallNum) {
-		// TODO Auto-generated method stub
-		return 0;
+	@Override 
+	public long update(String hallClosed, long hallNum) { 
+		return hallRepository.update(hallClosed, hallNum);
 	}
 }

@@ -10,8 +10,8 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class ExhbnDto {
-	private int exhbnNum;
-	private int hallNum;
+	private long exhbnNum;
+	private long hallNum;
     private String exhbnTitle; 
     private String startDate; 
     private String endDate;

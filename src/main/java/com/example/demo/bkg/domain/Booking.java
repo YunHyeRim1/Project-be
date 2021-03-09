@@ -20,7 +20,7 @@ public class Booking {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "book_num") private int bookNum;
+	@Column(name = "book_num") private long bookNum;
 	@Column(name = "book_date") private String bookDate;
 	@Column(name = "total_price") private String totalPrice;
 	@Column(name = "book_name") private String bookName;

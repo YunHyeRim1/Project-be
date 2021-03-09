@@ -16,28 +16,28 @@ public class RecommendServiceImpl extends AbstractService<Recommend> implements 
 	final RecommendRepository recommendRepository;
 
 	@Override 
-	public int save(Recommend Recommend) {
+	public long save(Recommend Recommend) {
 		return (recommendRepository.save(Recommend) != null) ? 1 : 0;
 	}
 	@Override 
-	public int delete(Recommend Recommend) {
+	public long delete(Recommend Recommend) {
 		recommendRepository.delete(Recommend); 
 		return(getOne(Recommend.getRecNum()) == null) ? 1 : 0;
 	}
 	@Override 
-	public int count() {
-		return (int)recommendRepository.count();
+	public long count() {
+		return recommendRepository.count();
 	}
 	@Override 
-    public Recommend getOne(int id) {
+    public Recommend getOne(long id) {
     	return getOne(id);
     }
 	@Override 
-    public Optional<Recommend> findById(int id) {
+    public Optional<Recommend> findById(long id) {
     	return recommendRepository.findById(id);
 	}
     @Override 
-    public boolean existsById(int id) {
+    public boolean existsById(long id) {
     	return recommendRepository.existsById(id);
     }
     @Override 

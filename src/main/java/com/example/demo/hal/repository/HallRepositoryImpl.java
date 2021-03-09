@@ -12,7 +12,7 @@ import com.example.demo.hal.domain.Hall;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class HallRepositoryImpl extends QuerydslRepositorySupport implements IHallRepository {
+public class HallRepositoryImpl extends QuerydslRepositorySupport implements HallCustomRepository {
 
 	//private final JPAQueryFactory qf;
 	private final EntityManager em;

@@ -25,32 +25,32 @@ public class RecommendController extends AbstractController<Recommend> {
 	final RecommendServiceImpl service;
 
 	@PostMapping("/save")
-	public ResponseEntity<Integer> save(Recommend t) {
+	public ResponseEntity<Long> save(Recommend t) {
 		return ResponseEntity.ok(service.save(t));
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Integer> delete(Recommend t) {
+	public ResponseEntity<Long> delete(Recommend t) {
 		return ResponseEntity.ok(service.delete(t));
 	}
 
 	@GetMapping("/count")
-	public ResponseEntity<Integer> count() {
+	public ResponseEntity<Long> count() {
 		return ResponseEntity.ok(service.count());
 	}
 
 	@GetMapping("/one/{id}")
-	public ResponseEntity<Recommend> getOne(int id) {
+	public ResponseEntity<Recommend> getOne(long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 
 	@GetMapping("/find/{id}")
-	public ResponseEntity<Optional<Recommend>> findById(int id) {
+	public ResponseEntity<Optional<Recommend>> findById(long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@GetMapping("/exists/{id}")
-	public ResponseEntity<Boolean> existsById(int id) {
+	public ResponseEntity<Boolean> existsById(long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
 

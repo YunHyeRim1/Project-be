@@ -16,28 +16,28 @@ public class BookingServiceImpl extends AbstractService<Booking> implements Book
 	final BookingRepository bookingRepository;
 	
 	@Override 
-	public int save(Booking booking) {
+	public long save(Booking booking) {
 		return (bookingRepository.save(booking) != null) ? 1 : 0;
 	}
 	@Override 
-	public int delete(Booking booking) {
+	public long delete(Booking booking) {
 		bookingRepository.delete(booking); 
 		return(getOne(booking.getBookNum()) == null) ? 1 : 0;
 	}
 	@Override 
-	public int count() {
-		return (int)bookingRepository.count();
+	public long count() {
+		return bookingRepository.count();
 	}
 	@Override 
-    public Booking getOne(int id) {
+    public Booking getOne(long id) {
     	return getOne(id);
     }
 	@Override 
-    public Optional<Booking> findById(int id) {
+    public Optional<Booking> findById(long id) {
     	return bookingRepository.findById(id);
 	}
     @Override 
-    public boolean existsById(int id) {
+    public boolean existsById(long id) {
     	return bookingRepository.existsById(id);
     }
     @Override 

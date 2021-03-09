@@ -26,32 +26,32 @@ public class ExhbnController extends AbstractController<Exhbn> {
 	final ExhbnServiceImpl service;
 
 	@PostMapping("/save")
-	public ResponseEntity<Integer> save(Exhbn t) {
-		return ResponseEntity.ok(service.save(t));
+	public ResponseEntity<Long> save(Exhbn e) {
+		return ResponseEntity.ok(service.save(e));
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Integer> delete(Exhbn t) {
-		return ResponseEntity.ok(service.delete(t));
+	public ResponseEntity<Long> delete(Exhbn e) {
+		return ResponseEntity.ok(service.delete(e));
 	}
 
 	@GetMapping("/count")
-	public ResponseEntity<Integer> count() {
+	public ResponseEntity<Long> count() {
 		return ResponseEntity.ok(service.count());
 	}
 
 	@GetMapping("/one/{id}")
-	public ResponseEntity<Exhbn> getOne(int id) {
+	public ResponseEntity<Exhbn> getOne(long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 
 	@GetMapping("/find/{id}")
-	public ResponseEntity<Optional<Exhbn>> findById(int id) {
+	public ResponseEntity<Optional<Exhbn>> findById(long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@GetMapping("/exists/{id}")
-	public ResponseEntity<Boolean> existsById(int id) {
+	public ResponseEntity<Boolean> existsById(long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
 

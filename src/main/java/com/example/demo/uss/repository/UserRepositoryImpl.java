@@ -7,7 +7,7 @@ import com.example.demo.uss.domain.User;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class UserRepositoryImpl extends QuerydslRepositorySupport implements IUserRepository {
+public class UserRepositoryImpl extends QuerydslRepositorySupport implements UserCustomRepository {
 
 	//private final JPAQueryFactory qf;
 	public UserRepositoryImpl() {

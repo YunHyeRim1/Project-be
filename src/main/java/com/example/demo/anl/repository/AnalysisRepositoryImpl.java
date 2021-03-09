@@ -7,7 +7,7 @@ import com.example.demo.anl.domain.Analysis;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class AnalysisRepositoryImpl extends QuerydslRepositorySupport implements IAnalysisRepository {
+public class AnalysisRepositoryImpl extends QuerydslRepositorySupport implements AnalysisCustomRepository {
 
 	//private final JPAQueryFactory qf;
 	public AnalysisRepositoryImpl() {

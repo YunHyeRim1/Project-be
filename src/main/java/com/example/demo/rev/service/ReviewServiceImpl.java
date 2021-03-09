@@ -16,28 +16,28 @@ public class ReviewServiceImpl extends AbstractService<Review> implements Review
 	final ReviewRepository reviewRepository;
 	
 	@Override 
-	public int save(Review review) {
+	public long save(Review review) {
 		return (reviewRepository.save(review) != null) ? 1 : 0;
 	}
 	@Override 
-	public int delete(Review review) {
+	public long delete(Review review) {
 		reviewRepository.delete(review); 
 		return(getOne(review.getReviewNum()) == null) ? 1 : 0;
 	}
 	@Override 
-	public int count() {
-		return (int)reviewRepository.count();
+	public long count() {
+		return reviewRepository.count();
 	}
 	@Override 
-    public Review getOne(int id) {
+    public Review getOne(long id) {
     	return getOne(id);
     }
 	@Override 
-    public Optional<Review> findById(int id) {
+    public Optional<Review> findById(long id) {
     	return reviewRepository.findById(id);
 	}
     @Override 
-    public boolean existsById(int id) {
+    public boolean existsById(long id) {
     	return reviewRepository.existsById(id);
     }
     @Override 

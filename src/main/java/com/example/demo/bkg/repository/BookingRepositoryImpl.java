@@ -7,7 +7,7 @@ import com.example.demo.bkg.domain.Booking;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class BookingRepositoryImpl extends QuerydslRepositorySupport implements IBookingRepository {
+public class BookingRepositoryImpl extends QuerydslRepositorySupport implements BookingCustomRepository {
 
 	//private final JPAQueryFactory qf;
 	public BookingRepositoryImpl() {

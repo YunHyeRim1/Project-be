@@ -27,38 +27,42 @@ public class HallController extends AbstractController<Hall> {
 	final HallServiceImpl service;
 
 	@PostMapping("/save")
-	public ResponseEntity<Integer> save(Hall t) {
-		return ResponseEntity.ok(service.save(t));
+	public ResponseEntity<Long> save(Hall h) {
+		return ResponseEntity.ok(service.save(h));
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Integer> delete(Hall t) {
-		return ResponseEntity.ok(service.delete(t));
+	public ResponseEntity<Long> delete(Hall h) {
+		return ResponseEntity.ok(service.delete(h));
 	}
 
 	@GetMapping("/count")
-	public ResponseEntity<Integer> count() {
+	public ResponseEntity<Long> count() {
 		return ResponseEntity.ok(service.count());
 	}
 
 	@GetMapping("/one/{id}")
-	public ResponseEntity<Hall> getOne(int id) {
+	public ResponseEntity<Hall> getOne(long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 
 	@GetMapping("/find/{id}")
-	public ResponseEntity<Optional<Hall>> findById(int id) {
+	public ResponseEntity<Optional<Hall>> findById(long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@GetMapping("/exists/{id}")
-	public ResponseEntity<Boolean> existsById(int id) {
+	public ResponseEntity<Boolean> existsById(long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Hall>> findAll() {
 		return ResponseEntity.ok(service.findAll());
+	}
+	@GetMapping("find/{name}/{location}")
+	public ResponseEntity<List<Hall>> findByNameAndLocation(@PathVariable String name, String location) {
+		return ResponseEntity.ok(service.findByHallNameAndHallLocation(name, location));
 	}
 	
 }

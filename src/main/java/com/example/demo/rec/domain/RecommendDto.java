@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class RecommendDto {
-	private int recNum;
-	private int exhbnNum;
-	private int userNum;
+	private long recNum;
+	private long exhbnNum;
+	private long userNum;
 }

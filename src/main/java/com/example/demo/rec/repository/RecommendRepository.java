@@ -10,10 +10,10 @@ import io.swagger.models.auth.In;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-interface IRecommendRepository {
+interface RecommendCustomRepository {
 	
 }
 
-public interface RecommendRepository extends JpaRepository<Recommend, Integer>, IRecommendRepository {
+public interface RecommendRepository extends JpaRepository<Recommend, Long>, RecommendCustomRepository {
 
 }

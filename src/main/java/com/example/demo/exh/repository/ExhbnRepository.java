@@ -6,13 +6,13 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-interface IExhbnRepository {
+interface ExhbnCustomRepository {
 
 	List<Exhbn> findByExhbnTitle(String exhbnTitle);
 	List<Exhbn> findByExhbnGenre(String exhbnGenre);
 	
 }
 
-public interface ExhbnRepository extends JpaRepository<Exhbn, Integer>, IExhbnRepository {
+public interface ExhbnRepository extends JpaRepository<Exhbn, Long>, ExhbnCustomRepository {
 
 }

@@ -9,7 +9,7 @@ import lombok.Data;
 
 @Data @Component @Lazy
 public class AnalysisDto {
-	private int analysis_num;
-	private int exhbn_num;
-	private int user_num;
+	private long analysis_num;
+	private long exhbn_num;
+	private long user_num;
 }

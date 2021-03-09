@@ -25,32 +25,32 @@ public class BookingController extends AbstractController<Booking> {
 	final BookingServiceImpl service;
 
 	@PostMapping("/save")
-	public ResponseEntity<Integer> save(Booking t) {
+	public ResponseEntity<Long> save(Booking t) {
 		return ResponseEntity.ok(service.save(t));
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Integer> delete(Booking t) {
+	public ResponseEntity<Long> delete(Booking t) {
 		return ResponseEntity.ok(service.delete(t));
 	}
 
 	@GetMapping("/count")
-	public ResponseEntity<Integer> count() {
+	public ResponseEntity<Long> count() {
 		return ResponseEntity.ok(service.count());
 	}
 
 	@GetMapping("/one/{id}")
-	public ResponseEntity<Booking> getOne(int id) {
+	public ResponseEntity<Booking> getOne(long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 
 	@GetMapping("/find/{id}")
-	public ResponseEntity<Optional<Booking>> findById(int id) {
+	public ResponseEntity<Optional<Booking>> findById(long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@GetMapping("/exists/{id}")
-	public ResponseEntity<Boolean> existsById(int id) {
+	public ResponseEntity<Boolean> existsById(long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
 

@@ -7,7 +7,7 @@ import com.example.demo.rec.domain.Recommend;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class RecommendRepositoryImpl extends QuerydslRepositorySupport implements IRecommendRepository {
+public class RecommendRepositoryImpl extends QuerydslRepositorySupport implements RecommendCustomRepository {
 	
 	//private final JPAQueryFactory qf;
 	public RecommendRepositoryImpl() {

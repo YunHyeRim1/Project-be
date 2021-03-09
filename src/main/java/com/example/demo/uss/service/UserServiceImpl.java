@@ -3,10 +3,15 @@ package com.example.demo.uss.service;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.cmm.service.AbstractService;
 import com.example.demo.uss.domain.User;
+import com.example.demo.uss.domain.UserDto;
 import com.example.demo.uss.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -16,33 +21,46 @@ public class UserServiceImpl  extends AbstractService<User> implements UserServi
 	final UserRepository userRepository;
 	
 	@Override 
-	public int save(User user) {
+	public long save(User user) {
 		return (userRepository.save(user) != null) ? 1 : 0;
 	}
 	@Override 
-	public int delete(User user) {
+	public long delete(User user) {
 		userRepository.delete(user); 
 		return(getOne(user.getUserNum()) == null) ? 1 : 0;
 	}
 	@Override 
-	public int count() {
-		return (int)userRepository.count();
+	public long count() {
+		return userRepository.count();
 	}
 	@Override 
-    public User getOne(int id) {
+    public User getOne(long id) {
     	return getOne(id);
     }
 	@Override 
-    public Optional<User> findById(int id) {
+    public Optional<User> findById(long id) {
     	return userRepository.findById(id);
 	}
     @Override 
-    public boolean existsById(int id) {
+    public boolean existsById(long id) {
     	return userRepository.existsById(id);
     }
     @Override 
     public List<User> findAll() {
     	return userRepository.findAll();
     }
-    
+	@Override
+	public UserDetails loadUserByUsername(String useridOrEmail) {
+		return UserDto.create(
+				userRepository.findByUseridOrEmail(useridOrEmail, useridOrEmail)
+				.orElseThrow(() -> new UsernameNotFoundException("아이디나 이메일을 찾을 수 없음.."))
+				);
+	}
+	
+	@Transactional
+	public UserDetails loadUserById(Long id) {
+		User user = userRepository.findById(id)
+				.orElseThrow(() -> new UsernameNotFoundException("User not found with id : " + id));
+		return UserDto.create(user);
+	}
 }

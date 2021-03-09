@@ -4,10 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.demo.bkg.domain.Booking;
 
-interface IBookingRepository {
+interface BookingCustomRepository {
 	
 }
 
-public interface BookingRepository extends JpaRepository<Booking, Integer>, IBookingRepository {
+public interface BookingRepository extends JpaRepository<Booking, Long>, BookingCustomRepository {
 
 }

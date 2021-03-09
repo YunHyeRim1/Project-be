@@ -7,7 +7,7 @@ import com.example.demo.rev.domain.Review;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements IReviewRepository {
+public class ReviewRepositoryImpl extends QuerydslRepositorySupport implements ReviewCustomRepository {
 
 	//private final JPAQueryFactory qf;
 	public ReviewRepositoryImpl() {

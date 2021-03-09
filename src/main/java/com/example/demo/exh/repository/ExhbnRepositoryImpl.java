@@ -11,7 +11,7 @@ import com.example.demo.exh.domain.Exhbn;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @Repository
-public class ExhbnRepositoryImpl extends QuerydslRepositorySupport implements IExhbnRepository {
+public class ExhbnRepositoryImpl extends QuerydslRepositorySupport implements ExhbnCustomRepository {
 
 	//private final JPAQueryFactory qf;
 	private final EntityManager em;

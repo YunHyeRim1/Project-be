@@ -20,37 +20,37 @@ import java.util.Optional;
 @RestController 
 @RequiredArgsConstructor 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController extends AbstractController<User> {
 	final UserServiceImpl service;
 
 	@PostMapping("/save")
-	public ResponseEntity<Integer> save(User t) {
+	public ResponseEntity<Long> save(User t) {
 		return ResponseEntity.ok(service.save(t));
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Integer> delete(User t) {
+	public ResponseEntity<Long> delete(User t) {
 		return ResponseEntity.ok(service.delete(t));
 	}
 
 	@GetMapping("/count")
-	public ResponseEntity<Integer> count() {
+	public ResponseEntity<Long> count() {
 		return ResponseEntity.ok(service.count());
 	}
 
 	@GetMapping("/one/{id}")
-	public ResponseEntity<User> getOne(int id) {
+	public ResponseEntity<User> getOne(long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 
 	@GetMapping("/find/{id}")
-	public ResponseEntity<Optional<User>> findById(int id) {
+	public ResponseEntity<Optional<User>> findById(long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@GetMapping("/exists/{id}")
-	public ResponseEntity<Boolean> existsById(int id) {
+	public ResponseEntity<Boolean> existsById(long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
 
