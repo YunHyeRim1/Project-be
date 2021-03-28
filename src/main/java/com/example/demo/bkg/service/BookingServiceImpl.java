@@ -13,36 +13,18 @@ import lombok.RequiredArgsConstructor;
 
 @Service @RequiredArgsConstructor
 public class BookingServiceImpl extends AbstractService<Booking> implements BookingService {
-	final BookingRepository bookingRepository;
+	final BookingRepository repo;
 	
-	@Override 
-	public long save(Booking booking) {
-		return (bookingRepository.save(booking) != null) ? 1 : 0;
-	}
-	@Override 
-	public long delete(Booking booking) {
-		bookingRepository.delete(booking); 
-		return(getOne(booking.getBookNum()) == null) ? 1 : 0;
-	}
-	@Override 
-	public long count() {
-		return bookingRepository.count();
-	}
-	@Override 
-    public Booking getOne(long id) {
-    	return getOne(id);
-    }
-	@Override 
-    public Optional<Booking> findById(long id) {
-    	return bookingRepository.findById(id);
-	}
-    @Override 
-    public boolean existsById(long id) {
-    	return bookingRepository.existsById(id);
-    }
-    @Override 
-    public List<Booking> findAll() {
-    	return bookingRepository.findAll();
-    }
-    
+	@Override public long save(Booking b) { return (repo.save(b) != null) ?  1 : 0;}
+	@Override public long delete(Booking b) { repo.delete(b); return (getOne(b.getBookNum()) == null) ? 1 : 0;}
+	@Override public long count() { return (long)repo.count();}
+	@Override public List<Booking> findAll() { return repo.findAll();}
+	@Override public Booking getOne(long id) { return repo.getOne(id);}
+	@Override public Optional<Booking> findById(long id){ return repo.findById(id);}
+	@Override public boolean existsById(long id) { return repo.existsById(id);}
+	@Override public long update(String bookName, String bookEmail, String bookPnumber, long bookNum) { 
+			return repo.update(bookName, bookEmail, bookPnumber, bookNum);}
+	@Override public List<Booking> findByBookNum(long bookNum) { return repo.findByBookNum(bookNum);}
+
+
 }

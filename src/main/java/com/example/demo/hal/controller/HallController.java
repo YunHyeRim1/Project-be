@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,12 +28,12 @@ public class HallController extends AbstractController<Hall> {
 	final HallServiceImpl service;
 
 	@PostMapping("/save")
-	public ResponseEntity<Long> save(Hall h) {
+	public ResponseEntity<Long> save(@RequestBody Hall h) {
 		return ResponseEntity.ok(service.save(h));
 	}
 
 	@DeleteMapping("/delete")
-	public ResponseEntity<Long> delete(Hall h) {
+	public ResponseEntity<Long> delete(@RequestBody Hall h) {
 		return ResponseEntity.ok(service.delete(h));
 	}
 
@@ -42,17 +43,17 @@ public class HallController extends AbstractController<Hall> {
 	}
 
 	@GetMapping("/one/{id}")
-	public ResponseEntity<Hall> getOne(long id) {
+	public ResponseEntity<Hall> getOne(@PathVariable long id) {
 		return ResponseEntity.ok(service.getOne(id));
 	}
 
 	@GetMapping("/find/{id}")
-	public ResponseEntity<Optional<Hall>> findById(long id) {
+	public ResponseEntity<Optional<Hall>> findById(@PathVariable long id) {
 		return ResponseEntity.ok(service.findById(id));
 	}
 
 	@GetMapping("/exists/{id}")
-	public ResponseEntity<Boolean> existsById(long id) {
+	public ResponseEntity<Boolean> existsById(@PathVariable long id) {
 		return ResponseEntity.ok(service.existsById(id));
 	}
 
@@ -60,9 +61,11 @@ public class HallController extends AbstractController<Hall> {
 	public ResponseEntity<List<Hall>> findAll() {
 		return ResponseEntity.ok(service.findAll());
 	}
-	@GetMapping("find/{name}/{location}")
-	public ResponseEntity<List<Hall>> findByNameAndLocation(@PathVariable String name, String location) {
-		return ResponseEntity.ok(service.findByHallNameAndHallLocation(name, location));
-	}
+
+
+//	@GetMapping("find/{name}/{location}")
+//	public ResponseEntity<List<Hall>> findByNameAndLocation(@PathVariable String name, String location) {
+//		return ResponseEntity.ok(service.findByHallNameAndHallLocation(name, location));
+//	}
 	
 }

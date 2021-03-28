@@ -1,8 +1,5 @@
 package com.example.demo.exh.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
@@ -20,4 +17,5 @@ public class ExhbnDto {
     private String exhbnArtist;
     private String exhbnContent;
     private String exhbnImage;
+    private String hallLocation;
 }

@@ -20,19 +20,12 @@ public class ExhbnRepositoryImpl extends QuerydslRepositorySupport implements Ex
 		//this.qf = qf;
 		this.em = em;
 	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Exhbn> findByExhbnTitle(String exhbnTitle) {
-		return em.createNamedQuery("Exhbn.findByExhbnTitle")
-					.setParameter("exhbnTitle", exhbnTitle)
-					.getResultList();
-	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Exhbn> findByExhbnGenre(String exhbnGenre) {
-		return em.createNamedQuery("select e from Exhbn e where e.exhbn_genre like :exhbnGenre")
-				.setParameter("exhbnGenre", exhbnGenre)
-				.getResultList();
-	}
-	
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<Exhbn> findByExhbnNum(long exhbnNum) {
+//		return em.createQuery("select e from Exhbn e where e.exhbn_num like :exhbnNum")
+//					.setParameter("exhbnNum", exhbnNum)
+//					.getResultList();
+//	}
+
 }

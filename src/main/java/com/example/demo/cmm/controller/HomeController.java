@@ -13,18 +13,16 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@Controller @RequiredArgsConstructor
-@SessionAttributes({"ctx", "cmm", "bkg", "uss", "rev", "exh"})
+@Controller
+//@SessionAttributes({"ctx", "cmm", "bkg", "uss", "rev", "exh"})
 public class HomeController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    final HttpSession session;
-	final HttpServletRequest request;
+//  final HttpSession session;
+//	final HttpServletRequest request;
 	
-    @GetMapping("/")
-    public String index(HttpSession session, HttpServletRequest request) {
-    	String ctx = request.getContextPath();
-    	logger.info("Project Initialized ... ");
-        
+	@GetMapping("/")
+    public String index() {
+        logger.info("Project Initialized ... ");
         return "index";
     }
 

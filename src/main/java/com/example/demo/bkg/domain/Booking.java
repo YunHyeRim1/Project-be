@@ -11,11 +11,13 @@ import javax.persistence.Table;
 
 import com.example.demo.exh.domain.Exhbn;
 import com.example.demo.uss.domain.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
 
 @Entity @Getter
 @Table(name = "bookings")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Booking {
 	
 	@Id 

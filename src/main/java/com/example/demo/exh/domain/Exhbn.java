@@ -18,14 +18,16 @@ import com.example.demo.anl.domain.Analysis;
 import com.example.demo.bkg.domain.Booking;
 import com.example.demo.hal.domain.Hall;
 import com.example.demo.rev.domain.Review;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
+import lombok.Setter;
 
-@Entity @Getter
-@NamedQuery(
-		name = "Exhbn.findByExhbnTitle", 
-		query = "select e from Exhbn e where e.exhbnTitle like :exhbnTitle")
-@Table(name = "exhbns")
+@Entity @Getter @Setter
+//@NamedQuery(
+//		name = "Exhbn.findByExhbnTitle", 
+//		query = "select e from Exhbn e where e.exhbnTitle like :exhbnTitle")
+@Table(name = "exhbns") @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Exhbn {
 	
 	@Id 
@@ -39,6 +41,7 @@ public class Exhbn {
     @Column(name = "exhbn_artist") private String exhbnArtist;
     @Column(name = "exhbn_content") private String exhbnContent;
     @Column(name = "exhbn_image") private String exhbnImage;
+    @Column(name = "hall_location") private String hallLocation;
     
     @ManyToOne
     @JoinColumn(name = "hall_num")
@@ -53,6 +56,7 @@ public class Exhbn {
     @OneToMany(mappedBy = "exhbn")
     private List<Booking> bookingList = new ArrayList<>();
 
+	
 }
 /*
 create table shows(

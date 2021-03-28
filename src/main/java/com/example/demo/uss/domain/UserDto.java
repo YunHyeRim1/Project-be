@@ -6,16 +6,13 @@ import java.util.stream.Collectors;
 import java.util.Objects;
 
 import org.springframework.context.annotation.Lazy;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 
 @Component @Lazy @Getter
-public class UserDto implements UserDetails {
-	private static final long serialVersionUID = 1L;
+public class UserDto {
+	//private static final long serialVersionUID = 1L;
 	private long userNum;
 	private String userid;
 	private String password;
@@ -26,7 +23,7 @@ public class UserDto implements UserDetails {
 	private String phoneNumber;
 	private String admin;
 	private String preferGenre;
-	
+	/*
 	private Collection<? extends GrantedAuthority> authorities;
 		
 	public UserDto(long userNum, String userid, String password, String username, String email,
@@ -76,5 +73,5 @@ public class UserDto implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return false;
-	}
+	} */
 }

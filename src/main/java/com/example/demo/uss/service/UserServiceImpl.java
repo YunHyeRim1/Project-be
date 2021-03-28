@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.cmm.service.AbstractService;
@@ -17,7 +15,7 @@ import com.example.demo.uss.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service @RequiredArgsConstructor
-public class UserServiceImpl  extends AbstractService<User> implements UserService {
+public class UserServiceImpl  extends AbstractService<User> {
 	final UserRepository userRepository;
 	
 	@Override 
@@ -49,6 +47,7 @@ public class UserServiceImpl  extends AbstractService<User> implements UserServi
     public List<User> findAll() {
     	return userRepository.findAll();
     }
+    /*
 	@Override
 	public UserDetails loadUserByUsername(String useridOrEmail) {
 		return UserDto.create(
@@ -63,4 +62,5 @@ public class UserServiceImpl  extends AbstractService<User> implements UserServi
 				.orElseThrow(() -> new UsernameNotFoundException("User not found with id : " + id));
 		return UserDto.create(user);
 	}
+	*/
 }

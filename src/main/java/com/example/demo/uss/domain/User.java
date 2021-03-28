@@ -49,9 +49,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Review> reviewList = new ArrayList<>();
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name="user_roles", 
-				joinColumns = @JoinColumn(name = "user_num"),
-		inverseJoinColumns = @JoinColumn(name="role_num"))
-	private Set<Role> roles = new HashSet<>();
+//	@ManyToMany(fetch = FetchType.LAZY)
+//	@JoinTable(name="user_roles", 
+//				joinColumns = @JoinColumn(name = "user_num"),
+//		inverseJoinColumns = @JoinColumn(name="role_num"))
+//	private Set<Role> roles = new HashSet<>();
 }
